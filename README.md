@@ -218,115 +218,70 @@ Potentially dangerous items are preserved and reported for manual review.
 
 # Installation
 
-Clean-Up is designed to be **agent-agnostic**.
+## Quick Start (Recommended)
 
-The exact installation location depends on the AI coding agent you use.
+**Install globally** and use the skill across all your projects:
 
-Clone or download this repository:
+### OpenCode
 
 ```bash
-git clone https://github.com/aetheramizu/clean-up.git
+# Clone to global skills directory
+git clone https://github.com/aetheramizu/clean-up.git ~/.opencode/skills/clean-up
 ```
 
-Then place the `SKILL.md` file in the skill/instruction directory supported by your AI coding agent.
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/aetheramizu/clean-up.git $env:USERPROFILE\.opencode\skills\clean-up
+```
 
-The skill itself does not depend on OpenCode, Claude Code, Codex, Cursor, or any particular framework.
+**That's it!** The skill is now available globally. Use it in any project:
+
+```
+Use the clean-up skill on this project.
+```
+
+or
+
+```
+@clean-up
+```
 
 ---
 
-# OpenCode
+### Claude Code / Cursor / Other Agents
 
-If your OpenCode installation supports skills, place the skill where OpenCode discovers project or global skills.
+**Global installation** (recommended):
 
-For example:
+```bash
+# For Claude Code
+git clone https://github.com/aetheramizu/clean-up.git ~/.claude/skills/clean-up
 
-```text
-your-project/
-└── .opencode/
-    └── skills/
-        └── clean-up/
-            └── SKILL.md
+# For Cursor
+git clone https://github.com/aetheramizu/clean-up.git ~/.cursor/skills/clean-up
 ```
 
-Then ask the agent to use the `clean-up` skill.
+**Per-project installation** (if your agent doesn't support global skills):
 
-> Check the current OpenCode documentation for the exact skill discovery path, as agent configuration conventions can change.
+```bash
+# Inside your project directory
+git clone https://github.com/aetheramizu/clean-up.git .opencode/skills/clean-up
+```
+
+Then invoke the skill using your agent's skill mechanism.
 
 ---
 
-# Claude Code
+## What Gets Installed
 
-For Claude Code installations that support project skills, place the skill in the project's skill directory.
-
-For example:
-
-```text
-your-project/
-└── .claude/
-    └── skills/
-        └── clean-up/
-            └── SKILL.md
+```
+~/.opencode/skills/clean-up/
+├── SKILL.md          ← The actual skill instructions
+├── README.md         ← Documentation
+├── LICENSE           ← MIT License
+└── examples/         ← Usage examples
 ```
 
-Then invoke the skill using the appropriate Claude Code skill mechanism.
-
-> Check the current Claude Code documentation for the exact installation and invocation syntax.
-
----
-
-# Codex
-
-For Codex environments that support reusable skills, install `SKILL.md` in the appropriate skills directory.
-
-For example:
-
-```text
-your-project/
-└── .codex/
-    └── skills/
-        └── clean-up/
-            └── SKILL.md
-```
-
-Then make the skill available to the Codex agent.
-
-> Check the current Codex documentation for the exact skill discovery path.
-
----
-
-# Cursor
-
-Cursor can use project-level agent instructions and reusable workflows depending on the current version.
-
-A common approach is to place the skill or its instructions inside the project's agent configuration.
-
-For example:
-
-```text
-your-project/
-└── .cursor/
-    └── skills/
-        └── clean-up/
-            └── SKILL.md
-```
-
-If your Cursor version uses a different mechanism, adapt the installation location while keeping the `SKILL.md` content unchanged.
-
----
-
-# Other AI Agents
-
-The skill can be adapted to any AI coding agent that supports:
-
-- Markdown-based instructions
-- Agent skills
-- Reusable prompts
-- Project-level instructions
-- Tool-using coding agents
-
-The core skill is intentionally **platform-independent**.
-
-If your agent does not support a formal `SKILL.md` system, you can use the contents of `SKILL.md` as the agent's project instruction or system prompt.
+The skill is **agent-agnostic** and works with any AI coding agent that supports markdown-based instructions.
 
 ---
 
